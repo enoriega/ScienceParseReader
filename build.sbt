@@ -4,7 +4,7 @@ version := "0.1"
 
 scalaVersion := "2.12.4"
 
-idePackagePrefix := Some("org.clulab.scienceparse")
+//idePackagePrefix := Some("org.clulab.scienceparse")
 
 val json4sVersion = "3.5.2"
 
