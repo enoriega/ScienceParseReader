@@ -1,5 +1,4 @@
 package org.clulab.scienceparse
-import ai.lum.common.ConfigUtils._
 import ai.lum.common.FileUtils._
 
 import java.io.{File, FilenameFilter}
@@ -46,7 +45,7 @@ object ScienceParseClient {
 
   def mkDocument(file: File): ScienceParseDocument = {
     val json = ujson.read(file.readString())
-    mkDocument(json, file.getName)
+    mkDocument(json("metadata"), file.getName)
   }
 
   def mkDocuments(dir: File): Seq[ScienceParseDocument] = {
@@ -62,6 +61,7 @@ object ScienceParseClient {
 //    val title = json.obj.get("title").map(_.str)
 //    val year = json.obj.get("year")
 //    val authors = json("authors").arr.map(mkAuthor).toVector
+
     val abstractText = json.obj.get("abstractText") match {
       case Some(a) if a != ujson.Null => a.toString()
       case _ => ""

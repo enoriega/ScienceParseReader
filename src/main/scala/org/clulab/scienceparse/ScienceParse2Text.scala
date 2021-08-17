@@ -13,12 +13,12 @@ object ScienceParse2Text extends App {
   // Save them to the output directory
 
   val outDir =
-    if(args.length > 1)
+    if (args.length > 1)
       new File(args(1))
     else
       new File("") // This is the CWD
 
-  for(doc <- docs.par) { // Do it in parallel
+  for (doc <- docs.par) { // Do it in parallel
     try {
       // Get the text elements
       val abs = doc.abstractText match {
@@ -49,8 +49,8 @@ object ScienceParse2Text extends App {
       pw.print(text)
       pw.close()
     } catch {
-        case ex: Exception =>
-          println(s"Problem with file ${doc.id}:\n$ex")
+      case ex: Exception =>
+        println(s"Problem with file ${doc.id}:\n$ex")
     }
   }
 
